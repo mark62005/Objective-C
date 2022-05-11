@@ -7,7 +7,7 @@
 
 #import <Foundation/Foundation.h>
 
-NSString *menu = @"Choose one of the following options:\n1. Uppercase\n2. Lowercase\n3. Numberize\n4. Canadianize\n5. Respond\n6. De-Space-It\n7. Done\n\n";
+NSString *menu = @"\nChoose one of the following options:\n1. Uppercase\n2. Lowercase\n3. Numberize\n4. Canadianize\n5. Respond\n6. De-Space-It\n7. Done\n\n";
 
 NSString *getUserInput(NSString *prompt) {
   // 255 unit long array of characters
@@ -39,6 +39,9 @@ int handleOperations(int operation, NSString *userInput) {
     }
   }
   else if (operation == 4) {
+//    if ([userInput hasSuffix:@"?"] || [userInput hasSuffix:@"!"] || [userInput hasSuffix:@","] || [userInput hasSuffix:@"."]) {
+//      
+//    }
     NSString *newString = [userInput stringByAppendingString:@", eh?"];
     NSLog(@"%@", newString);
   }
