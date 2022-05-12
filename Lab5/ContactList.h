@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readwrite) NSMutableArray *contacts;
 
 - (void) addContact: (Contact *) newContact;
+- (void) printContactDetailOf: (int) contactId;
 - (void) printContacts;
 
 @end

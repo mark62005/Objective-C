@@ -21,11 +21,20 @@
   [_contacts addObject:newContact];
 }
 
+- (void) printContactDetailOf: (int) contactId {
+  if (contactId >= 0 && contactId < [_contacts count]) {
+    Contact *contact = [_contacts objectAtIndex:contactId];
+    NSLog(@"%d: <%@> (%@)", contactId, [contact name], [contact email]);
+  }
+  else {
+    NSLog(@"Contact not found.");
+  }
+}
+
 - (void) printContacts {
   if ([_contacts count] > 0) {
     for (int i = 0; i < [_contacts count]; i++) {
-      Contact *contact = [_contacts objectAtIndex:i];
-      NSLog(@"%d: <%@> (%@)", i, [contact name], [contact email]);
+      [self printContactDetailOf:i];
     }
   } else {
     // handle error
