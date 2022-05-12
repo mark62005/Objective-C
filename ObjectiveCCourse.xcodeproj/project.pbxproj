@@ -18,6 +18,7 @@
 		43EA2994282C4E300066BA8F /* AdditionQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 43EA2993282C4E300066BA8F /* AdditionQuestion.m */; };
 		43EA299C282C4F710066BA8F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 43EA299B282C4F710066BA8F /* main.m */; };
 		43EA29A2282C5FB90066BA8F /* InputHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 43EA29A1282C5FB90066BA8F /* InputHandler.m */; };
+		43EA29A5282CA2D20066BA8F /* ScoreKeeper.m in Sources */ = {isa = PBXBuildFile; fileRef = 43EA29A4282CA2D20066BA8F /* ScoreKeeper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -99,6 +100,8 @@
 		43EA299B282C4F710066BA8F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		43EA29A0282C5FB90066BA8F /* InputHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InputHandler.h; sourceTree = "<group>"; };
 		43EA29A1282C5FB90066BA8F /* InputHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InputHandler.m; sourceTree = "<group>"; };
+		43EA29A3282CA2D20066BA8F /* ScoreKeeper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScoreKeeper.h; sourceTree = "<group>"; };
+		43EA29A4282CA2D20066BA8F /* ScoreKeeper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScoreKeeper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,10 +217,12 @@
 			isa = PBXGroup;
 			children = (
 				43EA298D282C3E060066BA8F /* main.m */,
-				43EA2992282C4E300066BA8F /* AdditionQuestion.h */,
-				43EA2993282C4E300066BA8F /* AdditionQuestion.m */,
 				43EA29A0282C5FB90066BA8F /* InputHandler.h */,
 				43EA29A1282C5FB90066BA8F /* InputHandler.m */,
+				43EA29A3282CA2D20066BA8F /* ScoreKeeper.h */,
+				43EA29A4282CA2D20066BA8F /* ScoreKeeper.m */,
+				43EA2992282C4E300066BA8F /* AdditionQuestion.h */,
+				43EA2993282C4E300066BA8F /* AdditionQuestion.m */,
 			);
 			path = Math;
 			sourceTree = "<group>";
@@ -428,6 +433,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43EA29A5282CA2D20066BA8F /* ScoreKeeper.m in Sources */,
 				43EA298E282C3E060066BA8F /* main.m in Sources */,
 				43EA29A2282C5FB90066BA8F /* InputHandler.m in Sources */,
 				43EA2994282C4E300066BA8F /* AdditionQuestion.m in Sources */,

@@ -7,11 +7,26 @@
 
 #import <Foundation/Foundation.h>
 #import "InputHandler.h"
+#import "ScoreKeeper.h"
 #import "AdditionQuestion.h"
+
+void printResults(int input, int answer, ScoreKeeper *scoreKeeper) {
+  printf(" \n");
+  if (input == answer) {
+    [scoreKeeper setRightCount:[scoreKeeper rightCount] + 1];
+    NSLog(@"Right!");
+  } else {
+    [scoreKeeper setWrongCount:[scoreKeeper wrongCount] + 1];
+    NSLog(@"Wrong!");
+  }
+  
+  NSLog(@"Score: %d right, %d wrong ---- %.2f%%", [scoreKeeper rightCount], [scoreKeeper wrongCount], [scoreKeeper getRightPercentage]);
+}
 
 int main(int argc, const char * argv[]) {
   @autoreleasepool {
     BOOL isGameOn = YES;
+    ScoreKeeper *scoreKeeper = [[ScoreKeeper alloc] init];
     
     NSLog(@"MATHS!");
     printf("\n");
@@ -25,12 +40,7 @@ int main(int argc, const char * argv[]) {
         continue;
       }
       else {
-        printf(" \n");
-        if ([userInput intValue] == [newAQ answer]) {
-          NSLog(@"Right!");
-        } else {
-          NSLog(@"Wrong!");
-        }
+        printResults([userInput intValue], [newAQ answer], scoreKeeper);
       }
     }
   }

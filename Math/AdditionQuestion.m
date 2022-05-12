@@ -20,7 +20,7 @@
   return self;
 }
 
-+ (void) compare: (NSInteger *) userInput with: (NSInteger *) answer {
++ (void) compare: (int) userInput with: (int) answer {
   if (userInput == answer) {
     NSLog(@"Right!");
   } else {

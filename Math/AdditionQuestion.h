@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface AdditionQuestion : NSObject
 
 @property (nonatomic, readonly) NSString *question;
-@property (nonatomic, readonly) NSInteger answer;
+@property (nonatomic, readonly) int answer;
 
 - (instancetype) init;
   
