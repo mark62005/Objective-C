@@ -8,9 +8,11 @@
 #import <Foundation/Foundation.h>
 #import "InputHandler.h"
 #import "ScoreKeeper.h"
-#import "AdditionQuestion.h"
+#import "QuestionManager.h"
+#import "QuestionFactory.h"
+#import "Question.h"
 
-void printResults(BOOL isRightAnswer, ScoreKeeper *scoreKeeper) {
+void printResults(BOOL isRightAnswer, ScoreKeeper *scoreKeeper, QuestionManager *questionManager) {
   printf(" \n");
   if (isRightAnswer) {
     [scoreKeeper setRightCount:[scoreKeeper rightCount] + 1];
@@ -21,26 +23,30 @@ void printResults(BOOL isRightAnswer, ScoreKeeper *scoreKeeper) {
   }
   
   NSLog(@"Score: %d right, %d wrong ---- %.2f%%", [scoreKeeper rightCount], [scoreKeeper wrongCount], [scoreKeeper getRightPercentage]);
+  NSLog(@"%@", [questionManager timeOutput]);
 }
 
 int main(int argc, const char * argv[]) {
   @autoreleasepool {
     BOOL isGameOn = YES;
     ScoreKeeper *scoreKeeper = [[ScoreKeeper alloc] init];
+    QuestionManager *questionManager = [[QuestionManager alloc] init];
+    QuestionFactory *questionFactory = [[QuestionFactory alloc] init];
     
     NSLog(@"MATHS!");
     printf("\n");
     
     while (isGameOn) {
-      AdditionQuestion *newAQ = [[AdditionQuestion alloc] init];
-      NSString *userInput = [InputHandler getUserInput:[newAQ question]];
+      Question *newQuestion = [questionFactory generateRandomQuestion];
+      [questionManager addQuestion:newQuestion];
       
+      NSString *userInput = [InputHandler getUserInput:[newQuestion question]];
       if ([[userInput lowercaseString] isEqualToString:@"quit"]) {
         isGameOn = NO;
         continue;
       }
       else {
-        printResults([AdditionQuestion compare:[userInput intValue] with:[newAQ answer]], scoreKeeper);
+        printResults([Question compare:[userInput intValue] with:[newQuestion answer]], scoreKeeper, questionManager);
       }
     }
   }
