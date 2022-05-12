@@ -20,12 +20,11 @@
   return self;
 }
 
-+ (void) compare: (int) userInput with: (int) answer {
++ (BOOL) compare: (int) userInput with: (int) answer {
   if (userInput == answer) {
-    NSLog(@"Right!");
-  } else {
-    NSLog(@"Wrong!");
+    return YES;
   }
+  return NO;
 }
 
 @end

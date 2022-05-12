@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) int answer;
 
 - (instancetype) init;
++ (BOOL) compare: (int) userInput with: (int) answer;
   
 @end
 

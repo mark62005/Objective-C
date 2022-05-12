@@ -10,9 +10,9 @@
 #import "ScoreKeeper.h"
 #import "AdditionQuestion.h"
 
-void printResults(int input, int answer, ScoreKeeper *scoreKeeper) {
+void printResults(BOOL isRightAnswer, ScoreKeeper *scoreKeeper) {
   printf(" \n");
-  if (input == answer) {
+  if (isRightAnswer) {
     [scoreKeeper setRightCount:[scoreKeeper rightCount] + 1];
     NSLog(@"Right!");
   } else {
@@ -40,7 +40,7 @@ int main(int argc, const char * argv[]) {
         continue;
       }
       else {
-        printResults([userInput intValue], [newAQ answer], scoreKeeper);
+        printResults([AdditionQuestion compare:[userInput intValue] with:[newAQ answer]], scoreKeeper);
       }
     }
   }
