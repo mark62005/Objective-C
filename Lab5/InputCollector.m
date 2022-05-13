@@ -36,6 +36,9 @@
     else if ([field isEqualToString:@"phone number"]) {
       userInput = [self inputForPrompt:@"Enter your phone number: "];
     }
+    else if ([field isEqualToString:@"keyword"]) {
+      userInput = [self inputForPrompt:@"Enter your keyword: "];
+    }
   }
   return userInput;
 }

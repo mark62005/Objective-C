@@ -45,18 +45,27 @@
   return [_contactEmails containsObject:newEmail];
 }
 
-//- (Contact *) getContactByKeyword: (NSString *)keyword
-//{
-//  if (contactId >= 0 && contactId < [_contacts count]) {
-//    return [_contacts objectAtIndex:contactId];
-//  }
-//  
-//  NSException *contactNotFoundException = [NSException
-//                                           exceptionWithName:@"ContactNotFoundException"
-//                                           reason:@"Contact Not Found"
-//                                           userInfo:nil];
-//  @throw contactNotFoundException;
-//}
+- (NSMutableSet *) getContactsByKeyword: (NSString *)keyword
+{
+  NSMutableSet *results = [NSMutableSet new];
+  for (Contact *contact in [_contacts allValues]) {
+    NSString *firstName = [[contact firstName] lowercaseString];
+    NSString *lastName = [[contact lastName] lowercaseString];
+    NSString *email = [[contact email] lowercaseString];
+    if ([firstName containsString:keyword] || [lastName containsString:keyword] || [email containsString:keyword]) {
+      [results addObject:contact];
+    }
+  }
+  if ([results count] > 0) {
+    return results;
+  }
+  
+  NSException *contactNotFoundException = [NSException
+                                           exceptionWithName:@"ContactNotFoundException"
+                                           reason:@"Contact Not Found"
+                                           userInfo:nil];
+  @throw contactNotFoundException;
+}
 
 - (void) printContacts
 {

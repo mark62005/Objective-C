@@ -93,7 +93,20 @@ int showContactDetail(ContactList *contactList, InputCollector *inputCollector) 
 }
 
 int searchContact(ContactList *contactList, InputCollector *inputCollector) {
-  NSString *keywordInput = [inputCollector inputForPrompt:@"Enter your keyword: "];
+  NSString *keywordInput = [[inputCollector inputForPrompt:@"Enter your keyword: "] lowercaseString];
+  keywordInput = [inputCollector handleRequiredFieldError:@"keyword" forInput:keywordInput];
+  
+  @try {
+    NSArray *results = [[contactList getContactsByKeyword:keywordInput] allObjects];
+    int i = 0;
+    for (Contact *contact in results) {
+      NSLog(@"%d: <%@ %@> (%@)", i, [contact firstName], [contact lastName], [contact email]);
+      i++;
+    }
+  }
+  @catch(NSException *e) {
+    NSLog(@"%@", [e reason]);
+  }
   return 0;
 }
 
