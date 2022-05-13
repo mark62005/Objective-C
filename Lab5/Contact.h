@@ -11,10 +11,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Contact : NSObject
 
-@property (nonatomic, readwrite) NSString *name;
-@property (nonatomic, readwrite) NSString *email;
+@property (nonatomic) NSString *firstName;
+@property (nonatomic) NSString *lastName;
+@property (nonatomic) NSString *email;
+@property (nonatomic) NSMutableDictionary *phoneNumbers;
 
-- (instancetype) initWithName: (NSString *) name andEmail: (NSString *) email;
+- (instancetype) initWithFirstName: (NSString *)firstName andLastName: (NSString *)lastName andEmail: (NSString *) email;
+- (instancetype) initWithFirstName: (NSString *)firstName andLastName: (NSString *)lastName andEmail: (NSString *) email andPhoneNumbers: (NSMutableDictionary *)phoneNumbers;
+- (void) printDetails;
+
++ (BOOL) isPhoneFormat: (NSString *)input;
++ (BOOL) isEmailFormat: (NSString *)input;
 
 @end
 

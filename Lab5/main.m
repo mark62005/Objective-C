@@ -11,10 +11,11 @@
 #import "Contact.h"
 
 int addSampleContacts(ContactList *contactList) {
-  Contact *mark = [[Contact alloc] initWithName:@"Mark" andEmail:@"mark@email.com"];
-  Contact *thomas = [[Contact alloc] initWithName:@"Thomas" andEmail:@"thomas@email.com"];
-  Contact *cathy = [[Contact alloc] initWithName:@"Cathy" andEmail:@"cathy@email.com"];
-  Contact *cyn = [[Contact alloc] initWithName:@"Cyn" andEmail:@"cyn@email.com"];
+  NSMutableDictionary *phoneNumbers1 = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"123-123-1234", @"Mobile", @"111-111-1111", @"Home", nil];
+  Contact *mark = [[Contact alloc] initWithFirstName:@"Mark" andLastName:@"Wong" andEmail:@"mark@email.com" andPhoneNumbers:phoneNumbers1];
+  Contact *thomas = [[Contact alloc] initWithFirstName:@"Thomas" andLastName:@"Wong" andEmail:@"thomas@email.com"];
+  Contact *cathy = [[Contact alloc] initWithFirstName:@"Cathy" andLastName:@"Wong" andEmail:@"cathy@email.com"];
+  Contact *cyn = [[Contact alloc] initWithFirstName:@"Cyn" andLastName:@"Wong" andEmail:@"cyn@email.com"];
   
   [contactList addContact:mark];
   [contactList addContact:thomas];
@@ -25,23 +26,66 @@ int addSampleContacts(ContactList *contactList) {
 }
 
 int addNewContact(ContactList *contactList, InputCollector *inputCollector) {
-  NSString *nameInput = [inputCollector inputForPrompt:@"Enter contact name: "];
-  NSString *emailInput = [inputCollector inputForPrompt:@"Enter contact email: "];
-  Contact *newContact = [[Contact alloc] initWithName:nameInput andEmail:emailInput];
+  NSString *firstNameInput = [inputCollector inputForPrompt:@"Enter your first name: "];
+  // required field
+  firstNameInput = [inputCollector handleRequiredFieldErrors:@"first name" forInput:firstNameInput];
   
+  NSString *lastNameInput = [inputCollector inputForPrompt:@"Enter your last name: "];
+  NSString *emailInput = [inputCollector inputForPrompt:@"Enter your email address: "];
+  while ([emailInput length] == 0) {
+    // required field
+    emailInput = [inputCollector handleRequiredFieldErrors:@"email" forInput:emailInput];
+  }
+  emailInput = [inputCollector handleInputErrors:@"email" forInput:emailInput];
+  
+  NSMutableDictionary *phoneNumbers = [NSMutableDictionary new];
+  NSString *addPhoneNumberInput = [inputCollector inputForPrompt:@"Do you want to add a phone number? (y/n)"];
+  
+  // Input must be y / n
+  addPhoneNumberInput = [inputCollector handleInputErrors:@"y or n" forInput:addPhoneNumberInput];
+  // if input is y, then add a new phone number
+  while ([[addPhoneNumberInput lowercaseString] isEqualToString:@"y"]) {
+    NSString *phoneOptionInput = [inputCollector inputForPrompt:@"Select the following option(0: Mobile, 1: Work, 2: Home): "];
+    // input must be 0-2
+    phoneOptionInput = [inputCollector handleInputErrors:@"phone option" forInput:phoneOptionInput];
+    
+    NSString *phoneNumberInput = [inputCollector inputForPrompt:@"Enter your phone number (eg. XXX-XXX-XXXX): "];
+    if (![phoneNumberInput isEqualToString:@""]) {
+      // input must follow XXX-XXX-XXXX
+      phoneNumberInput = [inputCollector handleInputErrors:@"phone number" forInput:phoneNumberInput];
+      printf(" \n");
+    }
+    
+    NSArray *phoneTypes = [[NSArray alloc] initWithObjects:@"Mobile", @"Work", @"Home", nil];
+    [phoneNumbers setValue:phoneNumberInput forKey:[phoneTypes objectAtIndex:[phoneOptionInput intValue]]];
+    
+    addPhoneNumberInput = [inputCollector inputForPrompt:@"Do you want to add a phone number? (y/n)"];
+    // Input must be y / n
+    addPhoneNumberInput = [inputCollector handleInputErrors:@"y or n" forInput:addPhoneNumberInput];
+  }
+  
+  Contact *newContact = [[Contact alloc] initWithFirstName:firstNameInput andLastName:lastNameInput andEmail:emailInput andPhoneNumbers: phoneNumbers];
   [contactList addContact:newContact];
   return 0;
 }
 
+//NSMutableDictionary getPhoneNumberDictionary
+
 int showContactDetail(ContactList *contactList, InputCollector *inputCollector) {
   NSString *idInput = [inputCollector inputForPrompt:@"Enter contact id: "];
-  [contactList printContactDetailOf:[idInput intValue]];
+  @try {
+    Contact *contact = [contactList getContactWith:[idInput intValue]];
+    [contact printDetails];
+  }
+  @catch(NSException *e) {
+    NSLog(@"%@", [e reason]);
+  }
   return 0;
 }
 
 int main(int argc, const char * argv[]) {
   @autoreleasepool {
-    NSString *menu = @"\nThe menu: \nWhat would you like to do next? \nnew - Create a new contact \nlist - List all contacts \nshow - Show the detail with contact id \nquit - Exit Application \n>_";
+    NSString *menu = @"\nWhat would you like to do next? \nnew - Create a new contact \nlist - List all contacts \nshow - Display details along with an index \nquit - Exit Application";
     InputCollector *inputCollector = [[InputCollector alloc] init];
     ContactList *contactList = [[ContactList alloc] init];
     
