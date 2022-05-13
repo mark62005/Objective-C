@@ -39,7 +39,7 @@ int addNewContact(ContactList *contactList, InputCollector *inputCollector) {
   
   NSString *lastNameInput = [inputCollector inputForPrompt:@"Enter your last name: "];
   NSString *emailInput = [inputCollector inputForPrompt:@"Enter your email address: "];
-  validateEmail(contactList, inputCollector, emailInput);
+  emailInput = validateEmail(contactList, inputCollector, emailInput);
   
   NSMutableDictionary *phoneNumbers = [NSMutableDictionary new];
   NSString *addPhoneNumberInput = [inputCollector inputForPrompt:@"Do you want to add a phone number? (y/n)"];

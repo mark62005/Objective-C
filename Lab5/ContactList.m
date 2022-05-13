@@ -63,9 +63,7 @@
   if ([_contacts count] > 0) {
     int i = 0;
     for (Contact *contact in [_contacts allValues]) {
-//    for (int i = 0; i < [_contacts count]; i++) {
-//      Contact *contact = [self getContactById:i];
-      NSLog(@"%d: <%@%@> (%@)", i, [contact firstName], [contact lastName] != nil ? [NSString stringWithFormat:@" %@", [contact lastName]] : @"", [contact email]);
+      NSLog(@"%d: <%@ %@> (%@)", i, [contact firstName], [contact lastName], [contact email]);
       i++;
     }
   } else {
