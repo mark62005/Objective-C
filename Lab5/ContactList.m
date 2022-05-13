@@ -23,7 +23,7 @@
   [_contacts addObject:newContact];
 }
 
-- (Contact *) getContactWith: (int)contactId
+- (Contact *) getContactById: (int)contactId
 {
   if (contactId >= 0 && contactId < [_contacts count]) {
     return [_contacts objectAtIndex:contactId];
@@ -35,6 +35,19 @@
                                            userInfo:nil];
   @throw contactNotFoundException;
 }
+
+//- (Contact *) getContactByKeyword: (NSString *)keyword
+//{
+//  if (contactId >= 0 && contactId < [_contacts count]) {
+//    return [_contacts objectAtIndex:contactId];
+//  }
+//  
+//  NSException *contactNotFoundException = [NSException
+//                                           exceptionWithName:@"ContactNotFoundException"
+//                                           reason:@"Contact Not Found"
+//                                           userInfo:nil];
+//  @throw contactNotFoundException;
+//}
 
 - (void) printContactDetailOf: (int) contactId
 {

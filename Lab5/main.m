@@ -80,7 +80,7 @@ int showContactDetail(ContactList *contactList, InputCollector *inputCollector) 
   printf(" \n");
   
   @try {
-    Contact *contact = [contactList getContactWith:(int)[idInput integerValue]];
+    Contact *contact = [contactList getContactById:(int)[idInput integerValue]];
     [contact printDetails];
   }
   @catch(NSException *e) {
@@ -89,9 +89,14 @@ int showContactDetail(ContactList *contactList, InputCollector *inputCollector) 
   return 0;
 }
 
+int searchContact(ContactList *contactList, InputCollector *inputCollector) {
+  NSString *keywordInput = [inputCollector inputForPrompt:@"Enter your keyword: "];
+  return 0;
+}
+
 int main(int argc, const char * argv[]) {
   @autoreleasepool {
-    NSString *menu = @"\nWhat would you like to do next? \nnew - Create a new contact \nlist - List all contacts \nshow - Display details along with an index \nquit - Exit Application";
+    NSString *menu = @"\nWhat would you like to do next? \nnew - Create a new contact \nlist - List all contacts \nshow - Display details along with an index \nfind - Find contact with a keyword \nquit - Exit Application";
     InputCollector *inputCollector = [[InputCollector alloc] init];
     ContactList *contactList = [[ContactList alloc] init];
     
@@ -111,6 +116,9 @@ int main(int argc, const char * argv[]) {
       }
       else if ([userInput isEqualToString:@"show"]) {
         showContactDetail(contactList, inputCollector);
+      }
+      else if ([userInput isEqualToString:@"find"]) {
+        searchContact(contactList, inputCollector);
       }
       else {
         printf(" \n");
