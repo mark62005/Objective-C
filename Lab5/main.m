@@ -69,12 +69,18 @@ int addNewContact(ContactList *contactList, InputCollector *inputCollector) {
   return 0;
 }
 
-//NSMutableDictionary getPhoneNumberDictionary
+BOOL isNumeric(NSString *userInput) {
+  NSRegularExpression *numericRegex = [NSRegularExpression regularExpressionWithPattern:@"^\\d+$" options:NSRegularExpressionCaseInsensitive error:nil];
+  return [numericRegex numberOfMatchesInString:userInput options:0 range:NSMakeRange(0, [userInput length])] > 0;
+}
 
 int showContactDetail(ContactList *contactList, InputCollector *inputCollector) {
   NSString *idInput = [inputCollector inputForPrompt:@"Enter contact id: "];
+  idInput = [inputCollector handleInputErrors:@"contact id" forInput:idInput];
+  printf(" \n");
+  
   @try {
-    Contact *contact = [contactList getContactWith:[idInput intValue]];
+    Contact *contact = [contactList getContactWith:(int)[idInput integerValue]];
     [contact printDetails];
   }
   @catch(NSException *e) {
@@ -107,6 +113,7 @@ int main(int argc, const char * argv[]) {
         showContactDetail(contactList, inputCollector);
       }
       else {
+        printf(" \n");
         NSLog(@"Something went wrong, please try again.");
       }
     }

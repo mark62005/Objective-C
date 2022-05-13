@@ -21,7 +21,7 @@
   return [inputString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 
-- (NSString *)handleRequiredFieldErrors: (NSString *)field forInput: (NSString *) userInput
+- (NSString *)handleRequiredFieldErrors: (NSString *)field forInput: (NSString *)userInput
 {
   while ([userInput length] == 0) {
     NSLog(@"This field is required.");
@@ -39,7 +39,12 @@
   return userInput;
 }
 
-- (NSString *)handleInputErrors: (NSString *)situation forInput: (NSString *) userInput
+- (BOOL)isNotNumeric: (NSString *)userInput {
+  NSRegularExpression *numericRegex = [NSRegularExpression regularExpressionWithPattern:@"^\\d+$" options:NSRegularExpressionCaseInsensitive error:nil];
+  return [numericRegex numberOfMatchesInString:userInput options:0 range:NSMakeRange(0, [userInput length])] < 1;
+}
+
+- (NSString *)handleInputErrors: (NSString *)situation forInput: (NSString *)userInput
 {
   if ([situation isEqualToString:@"required field"]) {
     while ([userInput isEqualToString:@""]) {
@@ -79,6 +84,14 @@
       printf(" \n");
       NSLog(@"Something went wrong, please follow this format example@domain.");
       userInput = [self inputForPrompt:@"Enter your phone number (eg. example@domain): "];
+    }
+  }
+  else if ([situation isEqualToString:@"contact id"]) {
+    // input must be numeric
+    while ([self isNotNumeric:userInput]) {
+      printf(" \n");
+      NSLog(@"Something went wrong, please enter a number.");
+      userInput = [self inputForPrompt:@"Enter contact id: "];
     }
   }
   return userInput;
