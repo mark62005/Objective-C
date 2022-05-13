@@ -13,20 +13,24 @@
 - (instancetype) init
 {
   if (self == [super init]) {
-    _contacts = [NSMutableArray new];
+    _contacts = [NSMutableDictionary new];
+    _contactEmails = [NSMutableSet new];
   }
   return self;
 }
 
 - (void) addContact: (Contact *)newContact
 {
-  [_contacts addObject:newContact];
+  [_contacts setValue:newContact forKey:[newContact email]];
+  [_contactEmails addObject:[newContact email]];
 }
 
 - (Contact *) getContactById: (int)contactId
 {
-  if (contactId >= 0 && contactId < [_contacts count]) {
-    return [_contacts objectAtIndex:contactId];
+  if (contactId >= 0 && contactId < [_contactEmails count]) {
+    NSArray *emailArr = [_contactEmails allObjects];
+    NSString *key = [emailArr objectAtIndex:contactId];
+    return _contacts[key];
   }
   
   NSException *contactNotFoundException = [NSException
@@ -49,22 +53,11 @@
 //  @throw contactNotFoundException;
 //}
 
-- (void) printContactDetailOf: (int) contactId
-{
-  if (contactId >= 0 && contactId < [_contacts count]) {
-    Contact *contact = [_contacts objectAtIndex:contactId];
-    NSLog(@"%d: <%@ %@> (%@)", contactId, [contact firstName], [contact lastName], [contact email]);
-  }
-  else {
-    NSLog(@"Contact not found.");
-  }
-}
-
 - (void) printContacts
 {
   if ([_contacts count] > 0) {
     for (int i = 0; i < [_contacts count]; i++) {
-      Contact *contact = [_contacts objectAtIndex:i];
+      Contact *contact = [self getContactById:i];
       NSLog(@"%d: <%@ %@> (%@)", i, [contact firstName], [contact lastName], [contact email]);
     }
   } else {

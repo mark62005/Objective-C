@@ -12,11 +12,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ContactList : NSObject
 
-@property (nonatomic) NSMutableArray *contacts;
+@property (nonatomic) NSMutableDictionary *contacts;
+@property (nonatomic) NSMutableSet *contactEmails;
 
 - (void) addContact: (Contact *) newContact;
 - (Contact *) getContactById: (int)contactId;
-- (void) printContactDetailOf: (int) contactId;
 - (void) printContacts;
 
 @end
