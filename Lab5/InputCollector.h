@@ -6,14 +6,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ContactList.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface InputCollector : NSObject
 
 - (NSString *)inputForPrompt: (NSString *)promptString;
-- (NSString *)handleRequiredFieldErrors: (NSString *)field forInput: (NSString *) userInput;
-- (NSString *)handleInputErrors: (NSString *)situation forInput: (NSString *) userInput;
+- (NSString *)handleRequiredFieldError: (NSString *)field forInput: (NSString *) userInput;
+- (NSString *)handleInputError: (NSString *)situation forInput: (NSString *) userInput;
+- (NSString *)handleDuplicateEmail: (NSString *)emailInput in: (ContactList *)contactList;
 
 @end
 

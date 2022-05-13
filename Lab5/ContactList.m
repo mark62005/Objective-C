@@ -40,6 +40,11 @@
   @throw contactNotFoundException;
 }
 
+- (BOOL) isDuplicateEmail: (NSString *)newEmail
+{
+  return [_contactEmails containsObject:newEmail];
+}
+
 //- (Contact *) getContactByKeyword: (NSString *)keyword
 //{
 //  if (contactId >= 0 && contactId < [_contacts count]) {
@@ -56,9 +61,12 @@
 - (void) printContacts
 {
   if ([_contacts count] > 0) {
-    for (int i = 0; i < [_contacts count]; i++) {
-      Contact *contact = [self getContactById:i];
-      NSLog(@"%d: <%@ %@> (%@)", i, [contact firstName], [contact lastName], [contact email]);
+    int i = 0;
+    for (Contact *contact in [_contacts allValues]) {
+//    for (int i = 0; i < [_contacts count]; i++) {
+//      Contact *contact = [self getContactById:i];
+      NSLog(@"%d: <%@%@> (%@)", i, [contact firstName], [contact lastName] != nil ? [NSString stringWithFormat:@" %@", [contact lastName]] : @"", [contact email]);
+      i++;
     }
   } else {
     // handle error

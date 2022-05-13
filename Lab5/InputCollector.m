@@ -6,6 +6,7 @@
 //
 
 #import "InputCollector.h"
+#import "ContactList.h"
 #import "Contact.h"
 
 @implementation InputCollector
@@ -21,7 +22,7 @@
   return [inputString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 
-- (NSString *)handleRequiredFieldErrors: (NSString *)field forInput: (NSString *)userInput
+- (NSString *)handleRequiredFieldError: (NSString *)field forInput: (NSString *)userInput
 {
   while ([userInput length] == 0) {
     NSLog(@"This field is required.");
@@ -44,14 +45,9 @@
   return [numericRegex numberOfMatchesInString:userInput options:0 range:NSMakeRange(0, [userInput length])] < 1;
 }
 
-- (NSString *)handleInputErrors: (NSString *)situation forInput: (NSString *)userInput
+- (NSString *)handleInputError: (NSString *)situation forInput: (NSString *)userInput
 {
-  if ([situation isEqualToString:@"required field"]) {
-    while ([userInput isEqualToString:@""]) {
-      NSLog(@"This field is required.");
-    }
-  }
-  else if ([situation isEqualToString:@"y or n"]) {
+  if ([situation isEqualToString:@"y or n"]) {
     // input must be y / n
     NSRegularExpression *yesOrNoRegex = [NSRegularExpression regularExpressionWithPattern:@"^(y|n)$" options:NSRegularExpressionCaseInsensitive error:nil];
     
@@ -83,7 +79,7 @@
     while (![Contact isEmailFormat:userInput]) {
       printf(" \n");
       NSLog(@"Something went wrong, please follow this format example@domain.");
-      userInput = [self inputForPrompt:@"Enter your phone number (eg. example@domain): "];
+      userInput = [self inputForPrompt:@"Enter your email(eg. example@domain): "];
     }
   }
   else if ([situation isEqualToString:@"contact id"]) {
@@ -95,6 +91,18 @@
     }
   }
   return userInput;
+}
+
+- (NSString *)handleDuplicateEmail: (NSString *)emailInput in: (ContactList *)contactList
+{
+  while ([contactList isDuplicateEmail:emailInput]) {
+    printf(" \n");
+    NSLog(@"This email has been used, please try another one.");
+    emailInput = [self inputForPrompt:@"Enter your email: "];
+    emailInput = [self handleRequiredFieldError:@"email" forInput:emailInput];
+    emailInput = [self handleInputError:@"email" forInput:emailInput];
+  }
+  return emailInput;
 }
 
 @end

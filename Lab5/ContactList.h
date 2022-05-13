@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void) addContact: (Contact *) newContact;
 - (Contact *) getContactById: (int)contactId;
+- (BOOL) isDuplicateEmail: (NSString *)newEmail;
 - (void) printContacts;
 
 @end

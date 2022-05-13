@@ -25,34 +25,37 @@ int addSampleContacts(ContactList *contactList) {
   return 0;
 }
 
+NSString *validateEmail(ContactList *contactList, InputCollector *inputCollector, NSString *emailInput) {
+  emailInput = [inputCollector handleRequiredFieldError:@"email" forInput:emailInput];
+  emailInput = [inputCollector handleInputError:@"email" forInput:emailInput];
+  emailInput = [inputCollector handleDuplicateEmail:emailInput in:contactList];
+  return emailInput;
+}
+
 int addNewContact(ContactList *contactList, InputCollector *inputCollector) {
   NSString *firstNameInput = [inputCollector inputForPrompt:@"Enter your first name: "];
   // required field
-  firstNameInput = [inputCollector handleRequiredFieldErrors:@"first name" forInput:firstNameInput];
+  firstNameInput = [inputCollector handleRequiredFieldError:@"first name" forInput:firstNameInput];
   
   NSString *lastNameInput = [inputCollector inputForPrompt:@"Enter your last name: "];
   NSString *emailInput = [inputCollector inputForPrompt:@"Enter your email address: "];
-  while ([emailInput length] == 0) {
-    // required field
-    emailInput = [inputCollector handleRequiredFieldErrors:@"email" forInput:emailInput];
-  }
-  emailInput = [inputCollector handleInputErrors:@"email" forInput:emailInput];
+  validateEmail(contactList, inputCollector, emailInput);
   
   NSMutableDictionary *phoneNumbers = [NSMutableDictionary new];
   NSString *addPhoneNumberInput = [inputCollector inputForPrompt:@"Do you want to add a phone number? (y/n)"];
   
   // Input must be y / n
-  addPhoneNumberInput = [inputCollector handleInputErrors:@"y or n" forInput:addPhoneNumberInput];
+  addPhoneNumberInput = [inputCollector handleInputError:@"y or n" forInput:addPhoneNumberInput];
   // if input is y, then add a new phone number
   while ([[addPhoneNumberInput lowercaseString] isEqualToString:@"y"]) {
     NSString *phoneOptionInput = [inputCollector inputForPrompt:@"Select the following option(0: Mobile, 1: Work, 2: Home): "];
     // input must be 0-2
-    phoneOptionInput = [inputCollector handleInputErrors:@"phone option" forInput:phoneOptionInput];
+    phoneOptionInput = [inputCollector handleInputError:@"phone option" forInput:phoneOptionInput];
     
     NSString *phoneNumberInput = [inputCollector inputForPrompt:@"Enter your phone number (eg. XXX-XXX-XXXX): "];
     if (![phoneNumberInput isEqualToString:@""]) {
       // input must follow XXX-XXX-XXXX
-      phoneNumberInput = [inputCollector handleInputErrors:@"phone number" forInput:phoneNumberInput];
+      phoneNumberInput = [inputCollector handleInputError:@"phone number" forInput:phoneNumberInput];
       printf(" \n");
     }
     
@@ -61,7 +64,7 @@ int addNewContact(ContactList *contactList, InputCollector *inputCollector) {
     
     addPhoneNumberInput = [inputCollector inputForPrompt:@"Do you want to add a phone number? (y/n)"];
     // Input must be y / n
-    addPhoneNumberInput = [inputCollector handleInputErrors:@"y or n" forInput:addPhoneNumberInput];
+    addPhoneNumberInput = [inputCollector handleInputError:@"y or n" forInput:addPhoneNumberInput];
   }
   
   Contact *newContact = [[Contact alloc] initWithFirstName:firstNameInput andLastName:lastNameInput andEmail:emailInput andPhoneNumbers: phoneNumbers];
@@ -76,7 +79,7 @@ BOOL isNumeric(NSString *userInput) {
 
 int showContactDetail(ContactList *contactList, InputCollector *inputCollector) {
   NSString *idInput = [inputCollector inputForPrompt:@"Enter contact id: "];
-  idInput = [inputCollector handleInputErrors:@"contact id" forInput:idInput];
+  idInput = [inputCollector handleInputError:@"contact id" forInput:idInput];
   printf(" \n");
   
   @try {

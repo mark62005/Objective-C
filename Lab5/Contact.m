@@ -9,7 +9,7 @@
 
 @implementation Contact
 
-- (instancetype) initWithFirstName: (NSString *)firstName andLastName: (NSString *)lastName andEmail: (NSString *) email;
+- (instancetype) initWithFirstName: (NSString *)firstName andLastName: (NSString *)lastName andEmail: (NSString *)email;
 {
   if (self == [super init]) {
     _firstName = firstName;
@@ -20,7 +20,7 @@
   return self;
 }
 
-- (instancetype) initWithFirstName: (NSString *)firstName andLastName: (NSString *)lastName andEmail: (NSString *) email andPhoneNumbers: (NSMutableDictionary *)phoneNumbers;
+- (instancetype) initWithFirstName: (NSString *)firstName andLastName: (NSString *)lastName andEmail: (NSString *)email andPhoneNumbers: (NSMutableDictionary *)phoneNumbers;
 {
   if (self == [super init]) {
     _firstName = firstName;
