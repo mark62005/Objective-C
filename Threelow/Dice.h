@@ -11,6 +11,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Dice : NSObject
 
+@property (nonatomic) NSInteger score;
+@property (nonatomic) BOOL isHeld;
+
+- (void)roll;
+
 @end
 
 NS_ASSUME_NONNULL_END
