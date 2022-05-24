@@ -39,6 +39,12 @@
 		43FA862B28358A2600609B31 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 43FA862A28358A2600609B31 /* main.m */; };
 		43FA863628358D3C00609B31 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 43FA863528358D3C00609B31 /* main.m */; };
 		43FA863F28358D8400609B31 /* NSString+PigLatin.m in Sources */ = {isa = PBXBuildFile; fileRef = 43FA863E28358D8400609B31 /* NSString+PigLatin.m */; };
+		43FA86652836E75A00609B31 /* FoodTruck.m in Sources */ = {isa = PBXBuildFile; fileRef = 43FA865F2836E75900609B31 /* FoodTruck.m */; };
+		43FA86662836E75A00609B31 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 43FA86602836E75900609B31 /* main.m */; };
+		43FA86672836E75A00609B31 /* Server.m in Sources */ = {isa = PBXBuildFile; fileRef = 43FA86612836E75900609B31 /* Server.m */; };
+		43FA86682836E75A00609B31 /* Cook.m in Sources */ = {isa = PBXBuildFile; fileRef = 43FA86622836E75900609B31 /* Cook.m */; };
+		43FA86702836E94A00609B31 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 43FA866F2836E94A00609B31 /* main.m */; };
+		43FA86762836EACB00609B31 /* Bitmasks.m in Sources */ = {isa = PBXBuildFile; fileRef = 43FA86752836EACB00609B31 /* Bitmasks.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -141,6 +147,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		43FA86552836E70D00609B31 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		43FA866B2836E94A00609B31 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -207,6 +231,18 @@
 		43FA863528358D3C00609B31 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		43FA863D28358D8400609B31 /* NSString+PigLatin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+PigLatin.h"; sourceTree = "<group>"; };
 		43FA863E28358D8400609B31 /* NSString+PigLatin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+PigLatin.m"; sourceTree = "<group>"; };
+		43FA86572836E70D00609B31 /* Lab8 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Lab8; sourceTree = BUILT_PRODUCTS_DIR; };
+		43FA865E2836E75900609B31 /* Cook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cook.h; sourceTree = "<group>"; };
+		43FA865F2836E75900609B31 /* FoodTruck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodTruck.m; sourceTree = "<group>"; };
+		43FA86602836E75900609B31 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ../../ObjC/Lab8/main.m; sourceTree = "<group>"; };
+		43FA86612836E75900609B31 /* Server.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Server.m; sourceTree = "<group>"; };
+		43FA86622836E75900609B31 /* Cook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cook.m; sourceTree = "<group>"; };
+		43FA86632836E75900609B31 /* Server.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Server.h; sourceTree = "<group>"; };
+		43FA86642836E75900609B31 /* FoodTruck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodTruck.h; sourceTree = "<group>"; };
+		43FA866D2836E94A00609B31 /* Enum_Bitmasks */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Enum_Bitmasks; sourceTree = BUILT_PRODUCTS_DIR; };
+		43FA866F2836E94A00609B31 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		43FA86742836EACB00609B31 /* Bitmasks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bitmasks.h; sourceTree = "<group>"; };
+		43FA86752836EACB00609B31 /* Bitmasks.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Bitmasks.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -287,6 +323,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		43FA86542836E70D00609B31 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43FA866A2836E94A00609B31 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -297,6 +347,7 @@
 				43EA296C282B8E450066BA8F /* ClassAndProperties */,
 				43EA299A282C4F710066BA8F /* Collections */,
 				43EA29DC282DA0560066BA8F /* Inheritance */,
+				43FA866E2836E94A00609B31 /* Enum_Bitmasks */,
 				43EA293C2829B8DF0066BA8F /* Lab1 */,
 				43EA297E282B8F480066BA8F /* Lab2 */,
 				43EA298C282C3E060066BA8F /* Math */,
@@ -304,6 +355,7 @@
 				43EA29D1282D91AE0066BA8F /* Threelow */,
 				43FA862928358A2600609B31 /* Category */,
 				43FA863428358D3C00609B31 /* Lab7 */,
+				43FA86582836E70D00609B31 /* Lab8 */,
 				43EA292E2829ADA20066BA8F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -322,6 +374,8 @@
 				43EA29DB282DA0560066BA8F /* Inheritance */,
 				43FA862828358A2600609B31 /* Category */,
 				43FA863328358D3C00609B31 /* Lab7 */,
+				43FA86572836E70D00609B31 /* Lab8 */,
+				43FA866D2836E94A00609B31 /* Enum_Bitmasks */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -453,6 +507,30 @@
 				43FA863E28358D8400609B31 /* NSString+PigLatin.m */,
 			);
 			path = Lab7;
+			sourceTree = "<group>";
+		};
+		43FA86582836E70D00609B31 /* Lab8 */ = {
+			isa = PBXGroup;
+			children = (
+				43FA86602836E75900609B31 /* main.m */,
+				43FA865E2836E75900609B31 /* Cook.h */,
+				43FA86622836E75900609B31 /* Cook.m */,
+				43FA86642836E75900609B31 /* FoodTruck.h */,
+				43FA865F2836E75900609B31 /* FoodTruck.m */,
+				43FA86632836E75900609B31 /* Server.h */,
+				43FA86612836E75900609B31 /* Server.m */,
+			);
+			path = Lab8;
+			sourceTree = "<group>";
+		};
+		43FA866E2836E94A00609B31 /* Enum_Bitmasks */ = {
+			isa = PBXGroup;
+			children = (
+				43FA866F2836E94A00609B31 /* main.m */,
+				43FA86742836EACB00609B31 /* Bitmasks.h */,
+				43FA86752836EACB00609B31 /* Bitmasks.m */,
+			);
+			path = Enum_Bitmasks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -645,6 +723,40 @@
 			productReference = 43FA863328358D3C00609B31 /* Lab7 */;
 			productType = "com.apple.product-type.tool";
 		};
+		43FA86562836E70D00609B31 /* Lab8 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 43FA865B2836E70D00609B31 /* Build configuration list for PBXNativeTarget "Lab8" */;
+			buildPhases = (
+				43FA86532836E70D00609B31 /* Sources */,
+				43FA86542836E70D00609B31 /* Frameworks */,
+				43FA86552836E70D00609B31 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Lab8;
+			productName = Lab8;
+			productReference = 43FA86572836E70D00609B31 /* Lab8 */;
+			productType = "com.apple.product-type.tool";
+		};
+		43FA866C2836E94A00609B31 /* Enum_Bitmasks */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 43FA86712836E94A00609B31 /* Build configuration list for PBXNativeTarget "Enum_Bitmasks" */;
+			buildPhases = (
+				43FA86692836E94A00609B31 /* Sources */,
+				43FA866A2836E94A00609B31 /* Frameworks */,
+				43FA866B2836E94A00609B31 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Enum_Bitmasks;
+			productName = Enum_Bitmasks;
+			productReference = 43FA866D2836E94A00609B31 /* Enum_Bitmasks */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -688,6 +800,12 @@
 					43FA863228358D3C00609B31 = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
+					43FA86562836E70D00609B31 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					43FA866C2836E94A00609B31 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
 				};
 			};
 			buildConfigurationList = 43EA29282829ADA20066BA8F /* Build configuration list for PBXProject "ObjectiveCCourse" */;
@@ -713,7 +831,9 @@
 				43EA29CF282D91AE0066BA8F /* Threelow */,
 				43EA29DA282DA0560066BA8F /* Inheritance */,
 				43FA862728358A2600609B31 /* Category */,
+				43FA866C2836E94A00609B31 /* Enum_Bitmasks */,
 				43FA863228358D3C00609B31 /* Lab7 */,
+				43FA86562836E70D00609B31 /* Lab8 */,
 			);
 		};
 /* End PBXProject section */
@@ -825,6 +945,26 @@
 			files = (
 				43FA863628358D3C00609B31 /* main.m in Sources */,
 				43FA863F28358D8400609B31 /* NSString+PigLatin.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43FA86532836E70D00609B31 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43FA86682836E75A00609B31 /* Cook.m in Sources */,
+				43FA86662836E75A00609B31 /* main.m in Sources */,
+				43FA86672836E75A00609B31 /* Server.m in Sources */,
+				43FA86652836E75A00609B31 /* FoodTruck.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43FA86692836E94A00609B31 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43FA86702836E94A00609B31 /* main.m in Sources */,
+				43FA86762836EACB00609B31 /* Bitmasks.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1177,6 +1317,46 @@
 			};
 			name = Release;
 		};
+		43FA865C2836E70D00609B31 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W9DRYDA329;
+				ENABLE_HARDENED_RUNTIME = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		43FA865D2836E70D00609B31 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W9DRYDA329;
+				ENABLE_HARDENED_RUNTIME = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		43FA86722836E94A00609B31 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W9DRYDA329;
+				ENABLE_HARDENED_RUNTIME = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		43FA86732836E94A00609B31 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W9DRYDA329;
+				ENABLE_HARDENED_RUNTIME = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1284,6 +1464,24 @@
 			buildConfigurations = (
 				43FA863828358D3C00609B31 /* Debug */,
 				43FA863928358D3C00609B31 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		43FA865B2836E70D00609B31 /* Build configuration list for PBXNativeTarget "Lab8" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				43FA865C2836E70D00609B31 /* Debug */,
+				43FA865D2836E70D00609B31 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		43FA86712836E94A00609B31 /* Build configuration list for PBXNativeTarget "Enum_Bitmasks" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				43FA86722836E94A00609B31 /* Debug */,
+				43FA86732836E94A00609B31 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
